@@ -15,29 +15,38 @@ const fetchProducts = async () => {
     }
     const data = await response.json()
     console.log(data)
-    const productsUI = data.map(product => {
-      const {} = product
-      return `<div class="products-container">
+    const productsUI = data
+      .map(product => {
+        const {
+          fields: { company, colors, price, name, image }
+        } = product
+
+        console.log(company, colors, price, name, url, image[0])
+        const imgURL = image[0].url
+
+        return `<div class="products-container">
           <a
             href="product.html"
             class="single-product"
           >
             <img
-              src="./couch.jpg"
+              src="${imgURL}"
               alt="sofa"
               class="img single-product-img"
             />
 
             <footer>
-              <h5 class="name">product title</h5>
-              <span class="price">$9.99</span>
+              <h5 class="name">${name}</h5>
+              <span class="price">$ ${price}</span>
             </footer>
           </a>
         </div>
 `
-    })
+      })
+      .join('')
 
-    resultDIV.textContent = productsUI
+    resultDIV.innerHTML = productsUI
+    // resultDIV.insertAdjacentHTML('beforeend', productsUI)
   } catch (error) {
     console.log(error)
     resultDIV.innerHTML = `<p class="error">${error}</p>`
