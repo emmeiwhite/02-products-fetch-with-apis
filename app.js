@@ -14,17 +14,29 @@ const fetchProducts = async () => {
       throw new Error("Couldn't fetch the data!")
     }
     const data = await response.json()
-    console.log(data)
-    const productsUI = data
-      .map(product => {
-        const {
-          fields: { company, colors, price, name, image }
-        } = product
 
-        console.log(company, colors, price, name, url, image[0])
-        const imgURL = image[0].url
+    return data
 
-        return `<div class="products-container">
+    // resultDIV.insertAdjacentHTML('beforeend', productsUI)
+  } catch (error) {
+    console.log(error)
+    resultDIV.innerHTML = `<p class="error">${error}</p>`
+  }
+}
+
+// Function to display products
+const displayProducts = list => {
+  console.log(list)
+  const productsUI = list
+    .map(product => {
+      const {
+        fields: { company, colors, price, name, image }
+      } = product
+
+      console.log(company, colors, price, name, url, image[0])
+      const imgURL = image[0].url
+
+      return `<div class="products-container">
           <a
             href="product.html"
             class="single-product"
@@ -42,16 +54,10 @@ const fetchProducts = async () => {
           </a>
         </div>
 `
-      })
-      .join('')
+    })
+    .join('')
 
-    resultDIV.innerHTML = productsUI
-    // resultDIV.insertAdjacentHTML('beforeend', productsUI)
-  } catch (error) {
-    console.log(error)
-    resultDIV.innerHTML = `<p class="error">${error}</p>`
-  }
+  resultDIV.innerHTML = productsUI
 }
-
 /** --- A) Call the function  --- */
 fetchProducts()
