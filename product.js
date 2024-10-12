@@ -20,7 +20,7 @@ async function fetchProduct(id) {
 
     const data = await response.json()
 
-    renderProduct(data)
+    return data
   } catch (error) {
     resultDIV.innerHTML = `<p class="error">${error}</p>`
   }
@@ -69,10 +69,11 @@ const renderProduct = product => {
 
 // fetchProduct()
 
-function startCode() {
+async function startCode() {
   const id = getURLParams()
   // Starting from here!
-  fetchProduct(id)
+  const product = await fetchProduct(id)
+  renderProduct(product)
 }
 
 startCode()
