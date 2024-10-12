@@ -6,10 +6,48 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
+    <link
+      rel="stylesheet"
+      href="./styles.css"
+    />
     <title>Product Info</title>
   </head>
   <body>
-    <h1>This is the single product details page</h1>
+    <a
+      href="./index.html"
+      class="btn home-link"
+    >
+      Back Home
+    </a>
+
+    <section class="product">
+      <div class="product-wrapper">
+        <img
+          src="./couch.jpg"
+          alt="dummy image"
+          class="img"
+        />
+
+        <div class="product-info">
+          <h3>Couch</h3>
+          <h5>Company</h5>
+          <span>$9.99</span>
+          <div class="colors">
+            <span class="product-color"></span>
+            <span
+              class="product-color"
+              style="background-color: red"
+            ></span>
+          </div>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet repellat numquam
+            repudiandae quis, quae quo quos cupiditate, consectetur architecto quaerat illo. Qui,
+            blanditiis!
+          </p>
+          <button class="btn">Add to Cart</button>
+        </div>
+      </div>
+    </section>
 
     <script
       type="module"
