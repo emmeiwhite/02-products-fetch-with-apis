@@ -9,6 +9,8 @@ const fetchProducts = async () => {
   resultDIV.innerHTML = `<div class="loading"></div>`
 
   const response = await fetch(url)
+
+  /** 2. Success data fetching ...*/
   try {
     if (!response.ok) {
       throw new Error("Couldn't fetch the data!")
@@ -19,6 +21,7 @@ const fetchProducts = async () => {
 
     // resultDIV.insertAdjacentHTML('beforeend', productsUI)
   } catch (error) {
+    /** 3. Error State ...*/
     console.log(error)
     resultDIV.innerHTML = `<p class="error">${error}</p>`
   }
