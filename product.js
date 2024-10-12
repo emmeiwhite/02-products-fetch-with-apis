@@ -29,32 +29,32 @@ async function fetchProduct(id) {
 const renderProduct = product => {
   console.log(product)
   const {
-    fields: { company, colors, price, name, image, description }
+    fields: { company, colors, price, name: title, image, description }
   } = product
 
-  console.log(company, price, colors, name, image)
-
-  const [color1, color2] = colors
+  console.log(company, price, colors, title, image)
   const img = image[0].url
+
+  const colorsDOM = colors.map(color => {
+    return `<span class="product-color" style="background-color:${color}"></span>`
+  })
+
+  document.title = title.toUpperCase()
 
   const productUI = `
       <div class="product-wrapper">
         <img
           src="${img}"
-          alt="dummy image"
+          alt="${title}"
           class="img"
         />
 
         <div class="product-info">
-          <h3>${name}</h3>
+          <h3>${title}</h3>
           <h5>${company}</h5>
           <span>$9.99</span>
           <div class="colors">
-            <span class="product-color"></span>
-            <span
-              class="product-color"
-              style="background-color: red"
-            ></span>
+             ${colorsDOM}
           </div>
           <p>
          ${description}
