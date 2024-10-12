@@ -26,7 +26,6 @@ const fetchProducts = async () => {
 
 // Function to display products
 const displayProducts = list => {
-  console.log(list)
   const productsUI = list
     .map(product => {
       const {
@@ -36,7 +35,7 @@ const displayProducts = list => {
       console.log(company, colors, price, name, url, image[0])
       const imgURL = image[0].url
 
-      return `<div class="products-container">
+      return ` 
           <a
             href="product.html"
             class="single-product"
@@ -52,12 +51,20 @@ const displayProducts = list => {
               <span class="price">$ ${price}</span>
             </footer>
           </a>
-        </div>
 `
     })
     .join('')
 
-  resultDIV.innerHTML = productsUI
+  resultDIV.innerHTML = `<div class="products-container">
+        ${productsUI}
+    </div>`
 }
-/** --- A) Call the function  --- */
-fetchProducts()
+
+/** Let's use this setup in our application, start with a start() function */
+const start = async () => {
+  const data = await fetchProducts()
+  console.log(data)
+  displayProducts(data)
+}
+
+start()
