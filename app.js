@@ -29,7 +29,8 @@ const displayProducts = list => {
   const productsUI = list
     .map(product => {
       const {
-        fields: { company, colors, price, name, image }
+        fields: { company, colors, price, name, image },
+        id
       } = product
 
       console.log(company, colors, price, name, url, image[0])
@@ -37,7 +38,7 @@ const displayProducts = list => {
 
       return ` 
           <a
-            href="product.html"
+            href="product.html?id=${id}"
             class="single-product"
           >
             <img
@@ -67,4 +68,5 @@ const start = async () => {
   displayProducts(data)
 }
 
+/** --- Everything starts from the start() function  --- */
 start()
