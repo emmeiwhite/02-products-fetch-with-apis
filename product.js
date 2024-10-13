@@ -35,9 +35,11 @@ const renderProduct = product => {
   console.log(company, price, colors, title, image)
   const img = image[0].url
 
-  const colorsDOM = colors.map(color => {
-    return `<span class="product-color" style="background-color:${color}"></span>`
-  })
+  const colorsDOM = colors
+    .map(color => {
+      return `<span class="product-color" style="background-color:${color}"></span>`
+    })
+    .join('')
 
   document.title = title.toUpperCase()
 
